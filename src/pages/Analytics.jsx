@@ -12,15 +12,15 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const Analytics = () => {
-  const months = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-  ];
+// months outside component to avoid ESLint warning
+const months = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+];
 
+const Analytics = () => {
   const [chartData, setChartData] = useState({
     labels: months,
     datasets: [
@@ -32,24 +32,18 @@ const Analytics = () => {
     ],
   });
 
-  // Generate random revenue for all months
   useEffect(() => {
     const revenueData = months.map(() => Math.floor(Math.random() * 1000) + 200);
-    setChartData((prev) => ({
+    setChartData(prev => ({
       ...prev,
-      datasets: [
-        { ...prev.datasets[0], data: revenueData },
-      ],
+      datasets: [{ ...prev.datasets[0], data: revenueData }],
     }));
-  }, []);
+  }, []); // empty dependency array is safe
 
-  // Download chart as image
   const downloadChart = () => {
     const canvas = document.querySelector('canvas');
     if (canvas) {
-      canvas.toBlob((blob) => {
-        saveAs(blob, 'analytics-chart.png');
-      });
+      canvas.toBlob(blob => saveAs(blob, 'analytics-chart.png'));
     }
   };
 
