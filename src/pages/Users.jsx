@@ -73,7 +73,7 @@ const Users = () => {
   // Fetch users
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/users");
+      const res = await axios.get("https://dashboard-backend-rwbu.onrender.com/api/users");
       setUsers(res.data);
       setLoading(false);
     } catch (err) {
