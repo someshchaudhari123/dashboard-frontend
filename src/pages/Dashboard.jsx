@@ -108,7 +108,7 @@ const Dashboard = () => {
   const fetchUserCount = () => {
     setLoading(true);
     setError("");
-    fetch("http://localhost:8080/api/auth/users/count")
+    fetch("https://dashboard-backend-rwbu.onrender.com/api/auth/users/count")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch user count");
         return res.json();

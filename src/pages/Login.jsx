@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/auth/login', { email, password });
+      await axios.post('https://dashboard-backend-rwbu.onrender.com/api/auth/login', { email, password });
       alert('Login Successful!');
       navigate('/dashboard'); // redirect
     } catch (err) {
