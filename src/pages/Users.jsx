@@ -96,7 +96,7 @@ const Users = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/users", form);
+      await axios.post("https://dashboard-backend-rwbu.onrender.com/api/users", form);
       fetchUsers();
       setForm({ id: null, name: "", email: "", role: "", active: true });
     } catch (err) {
@@ -114,7 +114,7 @@ const Users = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/users/${form.id}`, form);
+      await axios.put(`https://dashboard-backend-rwbu.onrender.com/api/users/${form.id}`, form);
       fetchUsers();
       setEditing(false);
       setForm({ id: null, name: "", email: "", role: "", active: true });
@@ -127,7 +127,7 @@ const Users = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/users/${id}`);
+        await axios.delete(`https://dashboard-backend-rwbu.onrender.com/api/users/${id}`);
         fetchUsers();
       } catch (err) {
         console.error("Error deleting user:", err);
